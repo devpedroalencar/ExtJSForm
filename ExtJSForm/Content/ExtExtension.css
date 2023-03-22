@@ -1,0 +1,193 @@
+/* GroupingPanel css*/
+
+
+.x-grid-row-summary .x-grid-cell-inner {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.x-grouping-panel-ct{
+    background-color:darkgray
+}
+.x-grouping-panel-text{
+    color:white;padding:7px
+}
+.x-group-column{
+    background-image:none!important;background-color:transparent!important
+}
+.x-group-column .x-column-header-sort-ASC,
+.x-group-column .x-column-header-sort-DESC{
+    background-color:transparent!important
+}
+.x-group-column-inner{
+    padding:3px;height:21px;border:1px solid black;margin:2px;
+    background-color:#f5f5f5;font:normal 11px/13px tahoma,arial,verdana,sans-serif;
+    background-image:-webkit-linear-gradient(top,#f9f9f9,#e3e4e6);
+    background-image:-moz-linear-gradient(top,#f9f9f9,#e3e4e6);
+    background-image:-o-linear-gradient(top,#f9f9f9,#e3e4e6);
+    background-image:linear-gradient(top,#f9f9f9,#e3e4e6)
+}
+.x-group-column-line{
+    border-left:1px solid black;border-bottom:1px solid black;position:relative;
+    left:-25px;top:-11px;height:7px;width:22px
+}
+.x-group-column-text{
+    cursor:pointer
+}
+.x-group-by-panel-icon{
+    background-image:url(images/grid-grouping/groupbypanel.png)
+}
+.x-clear-icon{
+    background-image:url(../images/grid-grouping/clear.png)
+}
+.x-grid-col-remove-icon .x-dd-drop-icon {
+    background-image:url(../images/grid-grouping/delete.png)
+}
+
+.x-grid-cell-checkcolumn .x-grid-cell-inner {
+    padding-top: 4px;
+    padding-bottom: 2px;
+    line-height: 14px;
+}
+.x-grid-with-row-lines .x-grid-cell-checkcolumn .x-grid-cell-inner {
+    padding-top: 3px;
+}
+.x-grid-checkheader {
+    height: 14px;
+    background-image: url('../Imagem/grid/unchecked.gif');
+    background-position: 50% -2px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.x-grid-checkheader-checked {
+    background-image: url('../Imagem/grid/checked.gif');
+}
+
+.x-grid-checkheader-editor .x-form-cb-wrap {
+    text-align: center;
+}
+
+/* Sumary css */ 
+.x-grid-group-title {
+    font-size: 12px;
+}
+
+.x-grid-group-hd {
+    border-width: 0 0 1px 0 !important;
+}
+
+.x-grid-summary {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #99bbe8;
+    border-top: 1px solid #99bbe8 !important;
+}
+.x-grid-summary-item {
+    border-bottom: none;
+}
+.x-grid-summary-wrap {
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+    border-color: #99bbe8;
+}
+
+
+
+/** vim: ts=4:sw=4:nu:fdc=4:nospell 
+ *
+ * Ext.ux.grid.RowActions.css 
+ *
+ * Style sheets for Grid RowActions Plugin
+ *
+ * @author   Ing. Jozef Saki
+ * @date     27. March 2008
+ * @verson   $Id: Ext.ux.grid.RowActions.css 140 2008-04-06 01:24:10Z jozo $
+ *
+ * @license Ext.ux.grid.RowActions.css is licensed under the terms of
+ * the Open Source LGPL 3.0 license.  Commercial use is permitted to the extent
+ * that the code/component(s) do NOT become part of another Open Source or Commercially
+ * licensed development library or toolkit without explicit permission.
+ * 
+ * License details: http://www.gnu.org/licenses/lgpl.html
+ */
+
+/* styles for rows */
+.ux-row-action-cell .x-grid-cell-inner {
+	padding:1px 0 0 0;
+}
+.ux-row-action-item {
+	float:left;
+	min-width:16px;
+	height:16px;
+	background-repeat:no-repeat;
+	margin: 0 5px 0 0;
+	cursor:pointer;
+	overflow:hidden;
+}
+.x-ie .ux-row-action-item {
+	width:16px;
+}
+.x-ie .ux-row-action-text {
+	width:auto;
+}
+.ux-row-action-item span {
+	vertical-align:middle;
+	padding:0 0 0 20px;
+	line-height:18px;
+}
+.x-ie .ux-row-action-item span {
+	width:auto;
+}
+
+/* styles for groups */
+.x-grid-group-hd div {
+	position:relative;
+}
+
+.ux-grow-action-item {
+	min-width:16px;
+	height: 16px;
+	background-repeat:no-repeat;
+	background-position: 0 0 ! important;
+	margin: 0 0 0 4px;
+	padding: 0 ! important;
+	cursor:pointer;
+	float:left;
+}
+.x-ie .ux-grow-action-item {
+	width:16px;
+}
+.ux-action-right {
+	float:right;
+	margin: 0 3px 0 2px;
+	padding: 0 ! important;
+}
+.ux-grow-action-text {
+	padding: 0 ! important;
+	margin:0 ! important;
+	background:transparent none ! important;
+	float:left;
+}
+
+/* /Users/space/buildAgent/work/8cc7421dd8da164c/staging/packages/ux/sass/src/Gauge.scss:1 */
+.x-gauge-text {
+    position: absolute;
+    text-align: center;
+}
+/* /Users/space/buildAgent/work/8cc7421dd8da164c/staging/packages/ux/sass/var/Gauge.scss:28 */
+.x-gauge .x-gauge-track {
+    fill: #f0f0f0;
+    fill-opacity: 1;
+    stroke: #d4d4d4;
+    stroke-opacity: 1;
+    stroke-width: 1;
+}
+/* /Users/space/buildAgent/work/8cc7421dd8da164c/staging/packages/ux/sass/var/Gauge.scss:36 */
+.x-gauge .x-gauge-value {
+    fill: #157fcc;
+    fill-opacity: 1;
+    stroke: none;
+    stroke-opacity: 1;
+    stroke-width: 1;
+}
