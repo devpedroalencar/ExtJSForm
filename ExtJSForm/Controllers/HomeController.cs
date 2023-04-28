@@ -101,8 +101,6 @@ namespace ExtJSForm.Controllers
             if (!id_tree.HasValue)
             {
                 nodes = GetParentNodes();
-
-
             }
             else
             {
