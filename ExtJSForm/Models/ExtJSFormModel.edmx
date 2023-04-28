@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="extjsformModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="extjsformModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="infoextjsform">
           <Key>
             <PropertyRef Name="idInfoExtJS" />
@@ -14,26 +14,77 @@
           <Property Name="idade" Type="int" Nullable="false" />
           <Property Name="data" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="tree_extjs">
+          <Key>
+            <PropertyRef Name="id_tree" />
+          </Key>
+          <Property Name="id_tree" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+        </EntityType>
+        <Association Name="tree_extjs_ibfk_1">
+          <End Role="tree_extjs" Type="Self.tree_extjs" Multiplicity="0..1" />
+          <End Role="tree_extjs1" Type="Self.tree_extjs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tree_extjs">
+              <PropertyRef Name="id_tree" />
+            </Principal>
+            <Dependent Role="tree_extjs1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="extjsformModelStoreContainer">
           <EntitySet Name="infoextjsform" EntityType="Self.infoextjsform" Schema="extjsform" store:Type="Tables" />
+          <EntitySet Name="tree_extjs" EntityType="Self.tree_extjs" Schema="extjsform" store:Type="Tables" />
+          <AssociationSet Name="tree_extjs_ibfk_1" Association="Self.tree_extjs_ibfk_1">
+            <End Role="tree_extjs" EntitySet="tree_extjs" />
+            <End Role="tree_extjs1" EntitySet="tree_extjs" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="extjsformModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="extjsformEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="infoextjsform" EntityType="extjsformModel.infoextjsform" />
+          <EntitySet Name="tree_extjs" EntityType="extjsformModel.tree_extjs" />
+          <AssociationSet Name="tree_extjs_ibfk_1" Association="extjsformModel.tree_extjs_ibfk_1">
+            <End Role="tree_extjs" EntitySet="tree_extjs" />
+            <End Role="tree_extjs1" EntitySet="tree_extjs" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="infoextjsform">
           <Key>
             <PropertyRef Name="idInfoExtJS" />
           </Key>
           <Property Name="idInfoExtJS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="idade" Type="Int32" Nullable="false" />
           <Property Name="data" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="extjsformEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="infoextjsform" EntityType="Self.infoextjsform" />
-        </EntityContainer>
+        <EntityType Name="tree_extjs">
+          <Key>
+            <PropertyRef Name="id_tree" />
+          </Key>
+          <Property Name="id_tree" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <NavigationProperty Name="tree_extjs1" Relationship="extjsformModel.tree_extjs_ibfk_1" FromRole="tree_extjs" ToRole="tree_extjs1" />
+          <NavigationProperty Name="tree_extjs2" Relationship="extjsformModel.tree_extjs_ibfk_1" FromRole="tree_extjs1" ToRole="tree_extjs" />
+        </EntityType>
+        <Association Name="tree_extjs_ibfk_1">
+          <End Type="extjsformModel.tree_extjs" Role="tree_extjs" Multiplicity="0..1" />
+          <End Type="extjsformModel.tree_extjs" Role="tree_extjs1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tree_extjs">
+              <PropertyRef Name="id_tree" />
+            </Principal>
+            <Dependent Role="tree_extjs1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -43,10 +94,19 @@
           <EntitySetMapping Name="infoextjsform">
             <EntityTypeMapping TypeName="extjsformModel.infoextjsform">
               <MappingFragment StoreEntitySet="infoextjsform">
-                <ScalarProperty Name="idInfoExtJS" ColumnName="idInfoExtJS" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="idade" ColumnName="idade" />
                 <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="idade" ColumnName="idade" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="idInfoExtJS" ColumnName="idInfoExtJS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tree_extjs">
+            <EntityTypeMapping TypeName="extjsformModel.tree_extjs">
+              <MappingFragment StoreEntitySet="tree_extjs">
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id_tree" ColumnName="id_tree" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

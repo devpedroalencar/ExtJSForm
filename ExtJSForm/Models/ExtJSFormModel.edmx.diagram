@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6002bdd7fb41429ab23483520645959d" Name="Diagram1">
-        <EntityTypeShape EntityType="extjsformModel.infoextjsform" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="extjsformModel.infoextjsform" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="extjsformModel.tree_extjs" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="extjsformModel.tree_extjs_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

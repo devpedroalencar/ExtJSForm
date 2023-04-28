@@ -7763,8 +7763,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\JSExtjs\app.js" />
     <Content Include="Scripts\JSExtjs\controller\mainController.js" />
+    <Content Include="Scripts\JSExtjs\model\treeModel.js" />
     <Content Include="Scripts\JSExtjs\model\formExtModel.js" />
+    <Content Include="Scripts\JSExtjs\store\treeStore.js" />
     <Content Include="Scripts\JSExtjs\store\formExtStore.js" />
+    <Content Include="Scripts\JSExtjs\view\winFormAddTree.js" />
     <Content Include="Scripts\JSExtjs\view\winFormMain.js" />
     <Content Include="Scripts\JSExtjs\view\main.js" />
     <Content Include="Scripts\lib\ExtExtension.js" />

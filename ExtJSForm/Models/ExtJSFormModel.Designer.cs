@@ -17,6 +17,12 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region Metadados de Relação EDM
+
+[assembly: EdmRelationshipAttribute("extjsformModel", "tree_extjs_ibfk_1", "tree_extjs", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ExtJSForm.Models.tree_extjs), "tree_extjs1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ExtJSForm.Models.tree_extjs), true)]
+
+#endregion
+
 namespace ExtJSForm.Models
 {
     #region Contextos
@@ -80,6 +86,22 @@ namespace ExtJSForm.Models
             }
         }
         private ObjectSet<infoextjsform> _infoextjsform;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<tree_extjs> tree_extjs
+        {
+            get
+            {
+                if ((_tree_extjs == null))
+                {
+                    _tree_extjs = base.CreateObjectSet<tree_extjs>("tree_extjs");
+                }
+                return _tree_extjs;
+            }
+        }
+        private ObjectSet<tree_extjs> _tree_extjs;
 
         #endregion
 
@@ -91,6 +113,14 @@ namespace ExtJSForm.Models
         public void AddToinfoextjsform(infoextjsform infoextjsform)
         {
             base.AddObject("infoextjsform", infoextjsform);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet tree_extjs. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddTotree_extjs(tree_extjs tree_extjs)
+        {
+            base.AddObject("tree_extjs", tree_extjs);
         }
 
         #endregion
@@ -230,6 +260,176 @@ namespace ExtJSForm.Models
         private global::System.DateTime _data;
         partial void OndataChanging(global::System.DateTime value);
         partial void OndataChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// Nenhuma Documentação de Metadados disponível.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="extjsformModel", Name="tree_extjs")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tree_extjs : EntityObject
+    {
+        #region Método de Fábrica
+    
+        /// <summary>
+        /// Crie um novo objeto tree_extjs.
+        /// </summary>
+        /// <param name="id_tree">Valor inicial da propriedade id_tree.</param>
+        /// <param name="nome">Valor inicial da propriedade nome.</param>
+        public static tree_extjs Createtree_extjs(global::System.Int32 id_tree, global::System.String nome)
+        {
+            tree_extjs tree_extjs = new tree_extjs();
+            tree_extjs.id_tree = id_tree;
+            tree_extjs.nome = nome;
+            return tree_extjs;
+        }
+
+        #endregion
+
+        #region Propriedades Simples
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_tree
+        {
+            get
+            {
+                return _id_tree;
+            }
+            set
+            {
+                if (_id_tree != value)
+                {
+                    Onid_treeChanging(value);
+                    ReportPropertyChanging("id_tree");
+                    _id_tree = StructuralObject.SetValidValue(value, "id_tree");
+                    ReportPropertyChanged("id_tree");
+                    Onid_treeChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_tree;
+        partial void Onid_treeChanging(global::System.Int32 value);
+        partial void Onid_treeChanged();
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                OnnomeChanging(value);
+                ReportPropertyChanging("nome");
+                _nome = StructuralObject.SetValidValue(value, false, "nome");
+                ReportPropertyChanged("nome");
+                OnnomeChanged();
+            }
+        }
+        private global::System.String _nome;
+        partial void OnnomeChanging(global::System.String value);
+        partial void OnnomeChanged();
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> parent_id
+        {
+            get
+            {
+                return _parent_id;
+            }
+            set
+            {
+                Onparent_idChanging(value);
+                ReportPropertyChanging("parent_id");
+                _parent_id = StructuralObject.SetValidValue(value, "parent_id");
+                ReportPropertyChanged("parent_id");
+                Onparent_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _parent_id;
+        partial void Onparent_idChanging(Nullable<global::System.Int32> value);
+        partial void Onparent_idChanged();
+
+        #endregion
+
+        #region Propriedades de Navegação
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("extjsformModel", "tree_extjs_ibfk_1", "tree_extjs1")]
+        public EntityCollection<tree_extjs> tree_extjs1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("extjsformModel", "tree_extjs_ibfk_1", "tree_extjs")]
+        public tree_extjs tree_extjs2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs").Value = value;
+            }
+        }
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tree_extjs> tree_extjs2Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tree_extjs>("extjsformModel.tree_extjs_ibfk_1", "tree_extjs", value);
+                }
+            }
+        }
 
         #endregion
 

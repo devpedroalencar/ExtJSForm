@@ -1,7 +1,7 @@
 ﻿
 Ext.define('ExtJSForm.view.winFormMain', {
     extend: 'Ext.window.Window',
-    alias: 'widget.winformmain', // nome definido para acessar o form    
+    alias: 'widget.winformmain',
     width: 600,
     maxHeight: 480,
     title: 'Window Main',
@@ -35,12 +35,6 @@ Ext.define('ExtJSForm.view.winFormMain', {
             { text: 'Salvar', itemId: 'btnSalvar', iconCls: 'fa fa-floppy-o fa-inverse', action: 'salvar' }
         ];
         me.callParent(arguments);
-    },
-    listeners: {
-        afterrender: function (win) {
-            //win.down('#valor_abertura').setRequired(true);
-            //win.down('#id_usuario').setValue(win.id_usuario);
-            //win.tools.close.setVisible(false);
-        }
     }
-}); // fim ExtJSForm.view.teste.orcamento_has_item_disponibilizado
+
+}); 

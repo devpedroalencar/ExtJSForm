@@ -49,18 +49,49 @@
             }]
         });
 
-        this.items = [
+        me.treeStore = Ext.create('ExtJSForm.store.treeStore');
+        me.treeStore.load();
 
-            me.MainContainerWrap
+        me.tree = Ext.create('Ext.tree.Panel', {
+            title: 'Exemplo de Árvore com Store',
+            itemId: 'treePanel',
+            width: 400,
+            height: 300,
+            //renderTo: Ext.getBody(),
+            store: me.treeStore,
+            rootVisible: false,
+            tbar: ['->',
+                { text: 'Adicionar', iconCls: 'x-fa fa-plus-square-o', action: 'addWin' },
+                { text: 'Excluir', iconCls: 'x-fa fa-trash-o', action: 'delTree' }
+            ],
+            dockedItems: [{
+                xtype: 'pagingtoolbar',
+                store: me.treeStore,
+                dock: 'bottom',
+                displayInfo: true
+            }],
+            listeners: {
+                select: function (rowModel, record, index, opts) {
+                    var tree = me.down('#treePanel');
+
+                    tree.parent_id = record.get('id_tree');                 
+                },
+                load: function (store, records, successful, operation, eOpts) {
+                    var tree = me.down('#treePanel');
+
+                    tree.parent_id = null;
+                }
+            }
+        });
+
+        this.items = [
+            me.MainContainerWrap,
+            me.tree
         ];
 
         this.callParent();
     },
     listeners: {
-        render: function () {
-
-
-        },
         afterrender: function (win) {
 
         }

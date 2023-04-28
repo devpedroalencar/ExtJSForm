@@ -5,6 +5,7 @@ Ext.define('ExtJSForm.controller.mainController', {
     refs: [
         { ref: 'main', selector: 'mainmain' },
         { ref: 'winFormMain', selector: 'winformmain' },
+        { ref: 'viewwinFormAddTree', selector: 'winformaddtree' },
     ], // refs
 
     init: function () {
@@ -12,6 +13,10 @@ Ext.define('ExtJSForm.controller.mainController', {
             'mainmain button[action=addFrm]': { click: this.abreWindowMain },
             'mainmain button[action=deleteFrm]': { click: this.deletaRegistro },
             'winformmain button[action=salvar]': { click: this.salvaWinFormMain },
+
+            'mainmain button[action=addWin]': { click: this.abreWindowTree },
+            'mainmain button[action=delTree]': { click: this.deletaRegistroTreeJS },
+            'winformaddtree button[action=salvar]': { click: this.salvaWinFormAddTree },
         });
     },
 
@@ -51,8 +56,47 @@ Ext.define('ExtJSForm.controller.mainController', {
             store.remove(selected[0]);
             store.sync();
         }
-    }
+    },
 
-    
+    abreWindowTree: function (sender) {
+        var tree = sender.up('#treePanel');
+
+        Ext.create('ExtJSForm.view.winFormAddTree', { parent_id: tree.parent_id, treeStore: tree.getStore() });
+    },
+
+    salvaWinFormAddTree: function (sender) {
+        var win = sender.up('window');
+        var form = win.down('#frmTree').getForm();
+
+        if (form.isValid()) {
+            form.submit({
+                url: "/home/salvaDadosTree",
+                waitMsg: 'Salvando, aguarde...',
+                success: function (form, action) {
+                    win.treeStore.proxy.extraParams.id_tree = win.down('#parent_id').getValue();
+                    win.treeStore.load();
+                    win.close();
+                },
+                failure: Ext.Msg.alert("Erro.")
+            });
+        } else { Ext.Msg.alert("Preencha os campos corretamente."); }
+    },
+
+    deletaRegistroTreeJS: function (sender) {
+
+        var grid = sender.up('#treePanel');
+        var store = grid.getStore();
+
+        var selected = grid.getSelectionModel().getSelection();
+
+        if (selected.length == 0) {
+            Ext.Msg.alert("Selecione um registro.");
+            return;
+        } else {
+            store.remove(selected[0]);
+            store.sync();
+        }
+    },
+
 
 });
