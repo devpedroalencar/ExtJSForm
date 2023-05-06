@@ -13,7 +13,7 @@
       
     },
     LoadController: function (controllerName) {
-        var controller = Mvc.getController(controllerName);
+        const controller = Mvc.getController(controllerName);
         if (!controller.initialized) {
             controller.initialized = true;
         }

@@ -25,8 +25,8 @@ Ext.define('ExtJSForm.controller.mainController', {
     },
 
     salvaWinFormMain: function (sender) {
-        var win = sender.up('window');
-        var form = win.down('#frmMain').getForm();
+        const win = sender.up('window');
+        const form = win.down('#frmMain').getForm();
 
         if (form.isValid()) {
             form.submit({
@@ -44,10 +44,10 @@ Ext.define('ExtJSForm.controller.mainController', {
 
     deletaRegistro: function (sender) {
 
-        var grid = sender.up('grid');
-        var store = grid.getStore();
+        const grid = sender.up('grid');
+        const store = grid.getStore();
 
-        var selected = grid.getSelectionModel().getSelection();
+        const selected = grid.getSelectionModel().getSelection();
 
         if (selected.length == 0) {
             Ext.Msg.alert("Selecione um registro.");
@@ -59,14 +59,14 @@ Ext.define('ExtJSForm.controller.mainController', {
     },
 
     abreWindowTree: function (sender) {
-        var tree = sender.up('#treePanel');
+        const tree = sender.up('#treePanel');
 
         Ext.create('ExtJSForm.view.winFormAddTree', { parent_id: tree.parent_id, treeStore: tree.getStore() });
     },
 
     salvaWinFormAddTree: function (sender) {
-        var win = sender.up('window');
-        var form = win.down('#frmTree').getForm();
+        const win = sender.up('window');
+        const form = win.down('#frmTree').getForm();
 
         if (form.isValid()) {
             form.submit({
@@ -84,10 +84,10 @@ Ext.define('ExtJSForm.controller.mainController', {
 
     deletaRegistroTreeJS: function (sender) {
 
-        var grid = sender.up('#treePanel');
-        var store = grid.getStore();
+        const grid = sender.up('#treePanel');
+        const store = grid.getStore();
 
-        var selected = grid.getSelectionModel().getSelection();
+        const selected = grid.getSelectionModel().getSelection();
 
         if (selected.length == 0) {
             Ext.Msg.alert("Selecione um registro.");

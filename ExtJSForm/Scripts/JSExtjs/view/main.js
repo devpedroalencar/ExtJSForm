@@ -13,7 +13,7 @@
     },
 
     initComponent: function () {
-        var me = this;
+        const me = this;
 
         me.storeFormExt = Ext.create('ExtJSForm.store.formExtStore');
         me.storeFormExt.load();
@@ -72,12 +72,12 @@
             }],
             listeners: {
                 select: function (rowModel, record, index, opts) {
-                    var tree = me.down('#treePanel');
+                    const tree = me.down('#treePanel');
 
                     tree.parent_id = record.get('id_tree');                 
                 },
                 load: function (store, records, successful, operation, eOpts) {
-                    var tree = me.down('#treePanel');
+                    const tree = me.down('#treePanel');
 
                     tree.parent_id = null;
                 }
@@ -90,11 +90,5 @@
         ];
 
         this.callParent();
-    },
-    listeners: {
-        afterrender: function (win) {
-
-        }
-    },
-
+    }
 });

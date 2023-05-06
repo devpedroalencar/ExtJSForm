@@ -7,7 +7,7 @@ Ext.define('ExtJSForm.view.winFormAddTree', {
     title: 'Window Tree',
 
     initComponent: function () {
-        var me = this;
+        const me = this;
 
         me.items = [{
             border: false,
@@ -27,7 +27,7 @@ Ext.define('ExtJSForm.view.winFormAddTree', {
     },
     listeners: {
         afterrender: function (win) {
-            win.down('#parent_id').setValue(win.parent_id ? win.parent_id : null);
+            win.down('#parent_id').setValue(win.parent_id ?? null);
         }
     }
 }); 

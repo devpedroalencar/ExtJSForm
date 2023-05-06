@@ -7,7 +7,7 @@ Ext.define('ExtJSForm.view.winFormMain', {
     title: 'Window Main',
 
     initComponent: function () {
-        var me = this;
+        const me = this;
 
         me.items = [{
             border: false,
